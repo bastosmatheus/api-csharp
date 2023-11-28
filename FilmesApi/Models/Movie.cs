@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FilmesApi.Models;
+namespace MoviesApi.Models;
 
 public class Movie
 {
     // data annotations - fornecem uma validação dos dados de entrada, vindos do usuário.
-    
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
+
     [Required(ErrorMessage = "O campo MovieName não pode estar vazio.")]
     [MaxLength(50, ErrorMessage = "O filme deve ter menos de 50 caracteres.")]
     [MinLength(2, ErrorMessage = "O filme deve ter pelo menos 2 caracteres.")]
