@@ -1,13 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using MoviesApi.Controllers;
 using MoviesApi.Data;
+using MoviesApi.Models;
 using MoviesApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddScoped<MovieRepository>();
+builder.Services.AddScoped<IMovie, MovieRepository>();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

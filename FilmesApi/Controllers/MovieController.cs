@@ -10,7 +10,12 @@ namespace MoviesApi.Controllers;
 [Route("[controller]")]
 public class MovieController : ControllerBase
 {
-    private readonly MovieRepository _movieRepository;
+    private readonly IMovie _movieRepository;
+
+    public MovieController(IMovie movieRepository)
+    {
+        _movieRepository = movieRepository;
+    }
 
     [HttpGet]
     public List<Movie> GetAllMovies()

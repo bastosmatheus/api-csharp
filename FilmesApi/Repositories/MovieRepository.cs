@@ -5,7 +5,7 @@ namespace MoviesApi.Repositories;
 
 
 // classe repository serve para separar a camada de acesso aos dados, da camdada de regras de negócio
-public class MovieRepository
+public class MovieRepository : IMovie
 {
     private readonly AppDbContext _context;
 
